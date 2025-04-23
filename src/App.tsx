@@ -6,7 +6,7 @@ const IframeSubApp = () => {
   const whitelistedDomains = ['http://localhost:3000']
   useEffect(() => {
     // Listen for postMessage events from the parent window
-    const messageHandler = (event) => {
+    const messageHandler = (event:any) => {
       console.log(event)
       // Check the origin for security reasons
       if (whitelistedDomains.includes(event.origin)) {
