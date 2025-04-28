@@ -15,8 +15,8 @@ const IframeSubApp = () => {
         
       }
     };
-    window.parent.postMessage('{"event":"LOADED"}','http://localhost:3000')
-    window.parent.postMessage('{"event":"LOADED"}','https://dealerlink-stage.dr.aecloud.io')
+    window.parent.postMessage({"event":"LOADED"},'http://localhost:3000')
+    window.parent.postMessage({"event":"LOADED"},'https://dealerlink-stage.dr.aecloud.io')
     window.addEventListener('message', messageHandler);
 
     // Cleanup the event listener on unmount
