@@ -12,11 +12,11 @@ const IframeSubApp = () => {
       if (whitelistedDomains.includes(event.origin)) {
         setMessage(event.data); // Set the message received
         console.log(`Message received from whitelisted domain`,event)
-        window.postMessage('MESSAGE','http://localhost')
-        window.postMessage('MESSAGE','https://dealerlink-stage.dr.aecloud.io')
+        
       }
     };
     window.parent.postMessage('{"event":"LOADED"}','http://localhost')
+    window.parent.postMessage('{"event":"LOADED"}','https://dealerlink-stage.dr.aecloud.io')
     window.addEventListener('message', messageHandler);
 
     // Cleanup the event listener on unmount
