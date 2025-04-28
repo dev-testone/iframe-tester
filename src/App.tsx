@@ -15,7 +15,7 @@ const IframeSubApp = () => {
         window.postMessage('MESSAGE','http://localhost:3000')
       }
     };
-    window.postMessage('{"event":"LOADED"}','http://localhost:3000')
+    window.parent.postMessage('{"event":"LOADED"}','http://localhost:3000')
     window.addEventListener('message', messageHandler);
 
     // Cleanup the event listener on unmount
