@@ -3,7 +3,7 @@ import GMMotorsPage from './homepage';
 
 const IframeSubApp = () => {
   const [message, setMessage] = useState<any>({});
-  const whitelistedDomains = ['http://localhost:3000']
+  const whitelistedDomains = ['http://localhost','https://dealerlink-stage.dr.aecloud.io']
   useEffect(() => {
     // Listen for postMessage events from the parent window
     const messageHandler = (event:any) => {
@@ -12,10 +12,11 @@ const IframeSubApp = () => {
       if (whitelistedDomains.includes(event.origin)) {
         setMessage(event.data); // Set the message received
         console.log(`Message received from whitelisted domain`,event)
-        window.postMessage('MESSAGE','http://localhost:3000')
+        window.postMessage('MESSAGE','http://localhost')
+        window.postMessage('MESSAGE','https://dealerlink-stage.dr.aecloud.io')
       }
     };
-    window.parent.postMessage('{"event":"LOADED"}','http://localhost:3000')
+    window.parent.postMessage('{"event":"LOADED"}','http://localhost')
     window.addEventListener('message', messageHandler);
 
     // Cleanup the event listener on unmount
